@@ -1,13 +1,17 @@
-import express from "express";
-import mongoose from "mongoose";
-import ejs from "ejs";
+const express = require("express");
+const mongoose = require("mongoose");
+const ejs = require("ejs");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 app.set("view engine", "ejs");
+
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/wikiDB", {
+mongoose.connect("mongodb://localhost:27017/lettersDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

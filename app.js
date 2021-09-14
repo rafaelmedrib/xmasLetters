@@ -1,13 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
-const bodyParser = require("body-parser");
 
 const app = express();
 
 app.set("view engine", "ejs");
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.urlencoded({
+    extended: true
+}));
 
 app.use(express.static("public"));
 
@@ -17,6 +18,7 @@ mongoose.connect("mongodb://localhost:27017/lettersDB", {
 });
 
 const letterSchema = {
+    uid: String,
     name: String,
     message: String,
     email: String
@@ -39,11 +41,15 @@ app.route("/letters")
     })
 
     .post(function (req, res) {
+
         const newLetter = new Letter({
             name: req.body.name,
             message: req.body.message,
             email: req.body.email
         });
+
+        newLetter.uid = new mongoose.Types.ObjectId();
+        newLetter.uid.toString();
 
         newLetter.save(function (err) {
             if (!err) {
@@ -66,11 +72,11 @@ app.route("/letters")
 
 // REQUESTS TARGETING SPECIFIC LETTERS
 
-app.route("/letters/:userName")
+app.route("/letters/:letterID")
 
     .get(function (req, res) {
         Letter.findOne({
-            name: req.params.userName
+            uid: req.params.letterID
         }, function (err, foundLetter) {
             if (!err) {
                 res.send(foundLetter);
@@ -82,7 +88,7 @@ app.route("/letters/:userName")
 
     .put(function (req, res) {
         Letter.update({
-            name: req.params.userName
+            uid: req.params.letterID
         }, {
             name: req.body.name,
             message: req.body.message,
@@ -98,7 +104,7 @@ app.route("/letters/:userName")
 
     .patch(function (req, res) {
         Letter.update({
-            name: req.params.userName
+            uid: req.params.letterID
         }, {
             $set: req.body
         }, function (err) {
@@ -110,7 +116,7 @@ app.route("/letters/:userName")
 
     .delete(function (req, res) {
         Letter.deleteOne({
-            name: req.params.userName
+            uid: req.params.letterID
         }, function (err) {
             if (!err) {
                 res.send("Your letter has been succesfully deleted.");

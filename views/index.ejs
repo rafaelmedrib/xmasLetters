@@ -44,12 +44,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
     <div id="letter" class="modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -57,8 +51,8 @@
                     <h5 class="modal-title">...esse ano me comportei muuuito bem.</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form action="/letters" method="post">
                 <div class="modal-body">
-
                     <div class="mb-3">
                         <textarea placeholder="Por isso, andei pensando que mereço..." class="form-control"
                             id="letterMessageInput" name="letterMessageInput" rows="3"></textarea>
@@ -76,18 +70,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-danger">Enviar</button>
+                    <button type="submit" class="btn btn-danger">Enviar</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-    <script src="../app.js" async defer></script>
 </body>
 
 </html>

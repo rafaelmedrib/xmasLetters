@@ -26,6 +26,13 @@ const letterSchema = {
 
 const Letter = new mongoose.model("Letter", letterSchema);
 
+// HOME ROUTING
+
+app.get("/", function(req, res){
+    res.render("index")
+});
+
+
 // REQUESTS TARGETING ALL LETTERS
 
 app.route("/letters")
@@ -43,9 +50,9 @@ app.route("/letters")
     .post(function (req, res) {
 
         const newLetter = new Letter({
-            name: req.body.name,
-            message: req.body.message,
-            email: req.body.email
+            name: req.body.letterNameInput,
+            message: req.body.letterMessageInput,
+            email: req.body.letterEmailInput
         });
 
         newLetter.uid = new mongoose.Types.ObjectId();
@@ -53,7 +60,7 @@ app.route("/letters")
 
         newLetter.save(function (err) {
             if (!err) {
-                res.send("Your letter has been succesfully delivered");
+                res.render("sent");
             } else {
                 res.send(err);
             }

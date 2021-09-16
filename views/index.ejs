@@ -13,7 +13,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&family=Tangerine:wght@700&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -52,30 +53,30 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/letters" method="post">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <textarea placeholder="Por isso, andei pensando que mereço..." class="form-control"
-                            id="letterMessageInput" name="letterMessageInput" rows="3"></textarea>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <textarea placeholder="Por isso, andei pensando que mereço..." class="form-control"
+                                id="letterMessageInput" name="letterMessageInput" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="letterNameInput" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="letterNameInput" name="letterNameInput"
+                                placeholder="ex: Bolsonaro">
+                        </div>
+                        <div class="mb-3">
+                            <label for="letterEmailInput" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="letterEmailInput" name="letterEmailInput"
+                                placeholder="nome@exemplo.com">
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="letterNameInput" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="letterNameInput" name="letterNameInput"
-                            placeholder="ex: Bolsonaro">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-danger">Enviar</button>
                     </div>
-                    <div class="mb-3">
-                        <label for="letterEmailInput" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="letterEmailInput" name="letterEmailInput"
-                            placeholder="nome@exemplo.com">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-danger">Enviar</button>
-                </div>
                 </form>
             </div>
         </div>
     </div>
-</body>
 
-</html>
+    <%- include("partials/footer"); -%> 
+

@@ -12,7 +12,7 @@ app.use(express.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/lettersDB", {
+mongoose.connect("mongodb+srv://rafaelmedrib:YyDCjfgz4iIEzY9G@cartasdenatal.06smd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

@@ -28,7 +28,7 @@ const Letter = new mongoose.model("Letter", letterSchema);
 
 // HOME ROUTING
 
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
     res.render("index")
 });
 
@@ -131,6 +131,10 @@ app.route("/letters/:letterID")
         });
     });
 
-app.listen(3000, function () {
-    console.log("Server is up and running on port 3000.");
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+}
+app.listen(port, function () {
+    console.log("Server has started.");
 });

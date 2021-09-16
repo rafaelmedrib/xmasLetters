@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
@@ -12,7 +13,7 @@ app.use(express.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://rafaelmedrib:Test123@cartasdenatal.06smd.mongodb.net/CartasDeNatal?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://rafaelmedrib:" + process.env.DB_PASS + "@cartasdenatal.06smd.mongodb.net/CartasDeNatal?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
